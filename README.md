@@ -13,6 +13,11 @@ It used for heating systems. With its help, calculation of heating losses is per
 * EntityFramework
 * mahapps metro
 
+## Screenshot
+![alt-текст][logo]
+
+[logo]: https://pp.userapi.com/c849520/v849520822/16485/WXGbdM9ezi8.jpg "Admin's windows"
+
 ## Script for database
 
 ```sql
