@@ -1,0 +1,898 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"                     
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Teploseti"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"  x:Class="Teploseti.AdminWindow"
+        mc:Ignorable="d"
+        Title="Admin's Window" Height="536.276" Width="900" Icon="Resources/icon4.ico" FontSize="18" MinWidth="900" MinHeight="536.276">
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="stuffButton" Content="Go to staff's window" Click="stuffButton_Click"/>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle x:Name="userRectangle" Width="20"
+                   Height="20"
+                   Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_user_tie}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock x:Name="userButton" Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="user" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <DockPanel Margin="0">
+        <TabControl  x:Name="tabControl" SelectionChanged="tabControl_SelectionChanged">
+            <TabItem Header="Staff">
+                <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label" Content="Last name:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <Label x:Name="label1" Content="Fisrt name:" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+                        <Label x:Name="label2" Content="Middle name:" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+                        <Label x:Name="label3" Content="Post:" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+                        <Label x:Name="label4" Content="Passport data:" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                        <Label x:Name="label5" Content="Login:" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        <Label x:Name="label6" Content="Password:" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="16"/>
+                        <Label x:Name="label6_1" Content="Password again:" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="12"/>
+                        <Label x:Name="label7" Content="Account" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"  FontSize="22"/>
+                        <TextBox x:Name="textBox_tab1_1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="textBox_tab1_2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="textBox_tab1_3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBox x:Name="textBox_tab1_4" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <CheckBox x:Name="checkBox_tab1" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Content="Admin"/>
+                        <TextBox x:Name="textBox_tab1_6" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Height="32" Margin="85,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <PasswordBox x:Name="passwordBox_tab1" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" Height="32" Margin="85,0,5,0" VerticalAlignment="Center" FontSize="16"/>
+                        <PasswordBox x:Name="passwordBox_tab1_2" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="105,0,5,0" VerticalAlignment="Center" FontSize="16"/>
+
+                        <Button x:Name="button_tab1_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab1_add_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab1_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab1_edit_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab1_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab1_remove_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab1_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab1_clear_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Clear fields" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button2" Content="Password generator" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="155" FontSize="12" Height="31" Click="button2_Click"/>
+                        <Popup x:Name="popup" StaysOpen="False" Placement="Mouse">
+                            <DockPanel LastChildFill="True" Background="Aqua" Margin="0,5,0,0">
+                                <Label DockPanel.Dock="Top" Content="Keep obtained password and write it in 'Password again' field" HorizontalAlignment="Center" FontSize="14"/>
+                                <TextBox x:Name="popup_textBox" IsReadOnly="True" Width="200" Margin="0,5,15,0"/>
+                                <Button x:Name="popup_Button" Content="Generate" FontSize="14" Click="popup_Button_Click" Margin="0,5,15,0"/>
+                            </DockPanel>
+                        </Popup>
+                        <xctk:MaskedTextBox x:Name="maskedTextBox" Grid.Column="3" HorizontalAlignment="Stretch" Margin="10,5" TextWrapping="NoWrap"  VerticalAlignment="Center" Mask="LL0000000"/>
+                    </Grid>
+                    <DataGrid  x:Name="dataGrid_tab1"  IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14" GridLinesVisibility="All" SelectionMode="Single" SelectionChanged="dataGrid_tab1_SelectionChanged" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding idacc}" Header="idacc" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding Фамилия}" Header="Last name" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Имя}" Header="Fist name" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Отчество}" Header="Middle name" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Должность}" Header="Post"/>
+                            <DataGridTextColumn Binding="{Binding Паспорт}" Header="Passport"/>
+                            <DataGridTextColumn Binding="{Binding Администратор}" Header="Admin" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding Логин}" Header="Login" Width="*"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Coefficients">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TabControl x:Name="tabControl1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="tabControl1_SelectionChanged">
+                        <TabItem Header="Сoefficients that take into account heat loss" Controls:ControlsHelper.HeaderFontSize="18"  >
+                            <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label8" Content="No. SNiP:" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label9" Content="Material:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label10" Content="Initial diameter, m:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label11" Content="Final diameter, m:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label12" Content="Coefficient:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <TextBox x:Name="textBox_tab21_1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab21_3" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,105,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab21_4" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,105,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab21_5" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,105,0" Text="" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <Button x:Name="button_tab2_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab2_add_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab2_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab2_edit_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab2_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab2_remove_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab2_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab2_clear_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Clear fields" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="1" >
+                                        <Button x:Name="button_tab21_choose" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="32" Margin="0,10,0,9" FontSize="14" Click="button_tab21_choose_Click"/>
+                                        <TextBox x:Name="textBox_tab21_2" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16" IsReadOnly="True"/>
+                                    </DockPanel>
+
+                                </Grid>
+                                <DataGrid  x:Name="dataGrid_tab21" IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14" GridLinesVisibility="All" SelectionMode="Single" SelectionChanged="dataGrid_tab21_SelectionChanged" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding idm}" Header="idm" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding СНиП}" Header="No.SNiP"/>
+                                        <DataGridTextColumn Binding="{Binding Материал}" Header="Material" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding Нач_диаметр}" Header="In.diameter" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding Кон_диаметр}" Header="Final.diameter" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding Коэффициент}" Header="Coefficient"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </DockPanel>
+                        </TabItem>
+                        <TabItem Header="Coefficient of heat transfer" Controls:ControlsHelper.HeaderFontSize="18">
+                            <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label13" Content="No.SNiP:" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label14" Content="Temperature (before):" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label15" Content="Temperature (after):" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label16" Content="Type of surface:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label17" Content="Сoeff. premises low emissivity:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                                    <Label x:Name="label18" Content="Сoeff. premises high emissivity:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                                    <Label x:Name="label19" Content="Open-air coeff. low emissivity:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                                    <Label x:Name="label20" Content="Open-air coeff. high emissivity:" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                                    <TextBox x:Name="textBox_tab22_1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab22_2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab22_3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <ComboBox x:Name="comboBox_tab22" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="14" SelectedIndex="0" IsReadOnly="True">
+                                        <ComboBoxItem Content="Flat surface, equipment, vertical pipelines"/>
+                                        <ComboBoxItem Content="Horizontal pipelines"/>
+                                        <ComboBoxItem Content="All kinds"/>
+                                    </ComboBox>
+                                    <TextBox x:Name="textBox_tab22_4" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab22_5" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab22_6" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab22_7" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <Button x:Name="button_tab22_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab22_add_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab22_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab22_edit_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab22_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab22_remove_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab22_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab22_clear_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Clear fields" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                                <DataGrid  x:Name="dataGrid_tab22" IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14" GridLinesVisibility="All" SelectionMode="Single" SelectionChanged="dataGrid_tab22_SelectionChanged" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding СНиП}" Header="No.SNiP"/>
+                                        <DataGridTextColumn Binding="{Binding t_до}" Header="Temperature (before)"/>
+                                        <DataGridTextColumn Binding="{Binding t_после}" Header="Temperature (after)"/>
+                                        <DataGridTextColumn Binding="{Binding Поверхность}" Header="Surface" MaxWidth="200"/>
+                                        <DataGridTextColumn Binding="{Binding КПМИ}" Header="CPLE" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding КПВИ}" Header="CPHE" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding КОМИ}" Header="OCLE" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding КОВИ}" Header="OCHE" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </DockPanel>
+                        </TabItem>
+                    </TabControl>
+
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Materials">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="label23" Content="Name of material:" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                            <Label x:Name="label24" Content="Coeff. of thermal cond. of material:" Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox x:Name="textBox_tab32_1" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                            <TextBox x:Name="textBox_tab32_2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                            <Label x:Name="label23_1" Content="Name of isolator:" Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                            <Label x:Name="label24_1" Content="Coeff. of thermal cond. of isolator:" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="14"/>
+                            <TextBox x:Name="textBox_tab32_3" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                            <TextBox x:Name="textBox_tab32_4" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                            <Button x:Name="button_tab32_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab32_add_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="20" Height="20"
+										Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="button_tab32_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab32_edit_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="20" Height="20"
+										Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="button_tab32_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab32_remove_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="20" Height="20"
+										Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="button_tab32_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab32_clear_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="20" Height="20"
+										Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <TextBlock Text="Clear fieds" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                </StackPanel>
+                            </Button>
+
+
+                        </Grid>
+                        <DataGrid  x:Name="dataGrid_tab32" IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14" GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGrid_tab32_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                                <DataGridTextColumn Binding="{Binding Н_мат}" Header="Material" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding К_мат}" Header="Coeff.material"/>
+                                <DataGridTextColumn Binding="{Binding Н_из}" Header="Isolator" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding К_из}" Header="Coeff.isolator"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </DockPanel>
+
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Regions and pipes">
+                <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TabControl x:Name="tabControl3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="tabControl3_SelectionChanged">
+                        <TabItem Header="Region" Controls:ControlsHelper.HeaderFontSize="18"  >
+                            <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label26" Content="Name:" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label27" Content="Locality:" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <TextBox x:Name="textBox_tab41_1" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+
+                                    <Button x:Name="button_tab41_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab41_add_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab41_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab41_edit_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab41_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab41_remove_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab41_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab41_clear_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Clear field" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <ComboBox x:Name="comboBox_tab41" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Stretch"   Margin="5,0,15,0" Grid.Row="1" VerticalAlignment="Center"  Height="32" IsEditable="True" FontSize="16"/>
+
+
+                                </Grid>
+                                <DataGrid  x:Name="dataGrid_tab41" IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14" GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGrid_tab41_SelectionChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding Наименование}" Header="Name" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding Нас_пункт}" Header="Locality" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </DockPanel>
+                        </TabItem>
+                        <TabItem Header="Pipes" Controls:ControlsHelper.HeaderFontSize="18">
+                            <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="label28" Content="ID of pipe:" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label29" Content="Length, m:" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label30" Content="Inner diameter of pipe, m:" Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label31" Content="Outer diameter of pipe, m:" Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label32" Content="Inner diam. of isolator, m:" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label33" Content="Outer diam. of isolator, m:" Grid.Row="1" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="18"/>
+                                    <Label x:Name="label34" Content="Material:" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <Label x:Name="label35" Content="Region:" Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                                    <TextBox x:Name="textBox_tab42_1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                                    <TextBox x:Name="textBox_tab42_2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab42_3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab42_4" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab42_5" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <TextBox x:Name="textBox_tab42_6" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,85,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                                    <Button x:Name="button_tab42_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab42_add_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab42_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab42_edit_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab42_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab42_remove_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="button_tab42_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab42_clear_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="20" Height="20"
+												Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                                <Rectangle.OpacityMask>
+                                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <TextBlock Text="Clear field" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                                        </StackPanel>
+                                    </Button>
+                                    <DockPanel Grid.Column="3" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="2" >
+                                        <Button x:Name="button_tab42_choose_1" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="32" Margin="0,4,15,4" FontSize="14" Click="button_tab42_choose_1_Click"/>
+                                        <TextBox x:Name="textBox_tab42_7" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16" IsReadOnly="True"/>
+                                    </DockPanel>
+                                    <DockPanel Grid.Column="3" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="3" >
+                                        <Button x:Name="button_tab42_choose_2" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="32" Margin="0,4,15,4" FontSize="14" Click="button_tab42_choose_2_Click"/>
+                                        <TextBox x:Name="textBox_tab42_8" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16" IsReadOnly="True"/>
+                                    </DockPanel>
+                                </Grid>
+                                <DataGrid  x:Name="dataGrid_tab42" IsReadOnly="True" MinHeight="200" Margin="5" FontSize="14"  GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGrid_tab42_SelectionChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding id}" Header="ID"  />
+                                        <DataGridTextColumn Binding="{Binding idm}" Header="idm" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding idu}" Header="idu" MaxWidth="0"/>
+                                        <DataGridTextColumn Binding="{Binding Длина}" Header="Length"/>
+                                        <DataGridTextColumn Binding="{Binding ВТД}" Header="d.in. pipe"/>
+                                        <DataGridTextColumn Binding="{Binding НТД}" Header="d.out. pipe"/>
+                                        <DataGridTextColumn Binding="{Binding ВТИ}" Header="d.in. isol."/>
+                                        <DataGridTextColumn Binding="{Binding НТИ}" Header="d.out. isol."/>
+                                        <DataGridTextColumn Binding="{Binding Материал}" Header="Material" />
+                                        <DataGridTextColumn Binding="{Binding Участок}" Header="Region" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </DockPanel>
+                        </TabItem>
+                    </TabControl>
+
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Service">
+                <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label36" Content="Pipe:" Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <Label x:Name="label37" Content="Brigade number:" Grid.Row="2"  Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <Label x:Name="label38" Content="Date:" Grid.Row="1"  Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <Label x:Name="label39" Content="Result:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="1" >
+                            <Button x:Name="button_tab5_choose_1" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="32" Margin="0,4,15,4" FontSize="14" Click="button_tab5_choose_1_Click"/>
+                            <TextBox x:Name="textBox_tab5_1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16" IsReadOnly="True"/>
+                        </DockPanel>
+                        <TextBox x:Name="textBox_tab5_2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <DatePicker x:Name="datePicker_tab5" Grid.Column="3" HorizontalAlignment="Stretch" Margin="5,0,15,0" Grid.Row="1" VerticalAlignment="Center" Height="32" FontSize="16"/>
+                        <TextBox x:Name="textBox_tab5_3" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="" VerticalAlignment="Center" FontSize="16"/>
+                        <Button x:Name="button_tab5_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab5_add_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab5_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab5_edit_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab5_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab5_remove_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab5_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab5_clear_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Clear field" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <DataGrid  x:Name="dataGrid_tab5" IsReadOnly="True" MinHeight="200" Margin="5"  FontSize="14"  GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGrid_tab5_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding Участок}" Header="Region" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding idt}" Header="ID pipe" />
+                            <DataGridTextColumn Binding="{Binding Дата, StringFormat=\{0:dd.MM.yyyy\}}" Header="Date" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Бригада}" Header="Brigade number"/>
+                            <DataGridTextColumn Binding="{Binding Результат}" Header="Result" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Actual losses">
+                <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid DockPanel.Dock="Bottom" Background="#FFE3EDFF" VerticalAlignment="Bottom" Margin="0,3" Height="205">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label40" Content="Pipe:" Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <Label x:Name="label41" Content="Value:" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+                        <Label x:Name="label42" Content="Date:" Grid.Row="2"  Grid.Column="1" HorizontalAlignment="Right"  VerticalAlignment="Center"/>
+
+                        <DockPanel Grid.Column="2" HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="0" >
+                            <Button x:Name="button_tab6_choose_1" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="32" Margin="0,4,15,4" FontSize="14" Click="button_tab6_choose_1_Click"/>
+                            <TextBox x:Name="textBox_tab6_1" HorizontalAlignment="Stretch" Height="32" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="16" IsReadOnly="True"/>
+                        </DockPanel>
+                        <TextBox x:Name="textBox_tab6_3" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Height="32" Margin="5,0,15,0" Text="0" VerticalAlignment="Center" FontSize="16" LostFocus="textBox_tab21_5_LostFocus"/>
+                        <DatePicker x:Name="datePicker_tab6" Grid.Column="2" HorizontalAlignment="Stretch" Margin="5,0,15,0" Grid.Row="2" VerticalAlignment="Center" Height="32" FontSize="16"/>
+
+                        <Button x:Name="button_tab6_add" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="32" FontSize="14" Margin="30,0,5,0" Click="button_tab6_add_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_add}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Add" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab6_edit" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab6_edit_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_edit}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Edit" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab6_remove" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Height="32" FontSize="14" Margin="15,0,15,0" Click="button_tab6_remove_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_delete}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Remove" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="button_tab6_clear" HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" Height="32" FontSize="14" Margin="5,0,30,0" Click="button_tab6_clear_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Width="20" Height="20"
+									Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_clean}" />
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Text="Clear field" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <DataGrid  x:Name="dataGrid_tab6" IsReadOnly="True" MinHeight="200" Margin="5"  FontSize="14"  GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGrid_tab6_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding Участок}" Header="Region" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding idt}" Header="ID pipe" Width="*" />
+                            <DataGridTextColumn Binding="{Binding Дата, StringFormat=\{0:dd.MM.yyyy\}}" Header="Date" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Значение}" Header="Value" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Calculated losses">
+                <DockPanel Background="#FFE3EDFF" LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <DataGrid  x:Name="dataGrid_tab7" MinHeight="200" Margin="5" FontSize="14"  GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id}" Header="id" MaxWidth="0"/>
+                            <DataGridTextColumn Binding="{Binding Участок}" Header="Region" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding idt}" Header="ID pipe" />
+                            <DataGridTextColumn Binding="{Binding Дата, StringFormat=\{0:dd.MM.yyyy\}}" Header="Date" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Значение}" Header="Value"/>
+                            <DataGridTextColumn Binding="{Binding Сотрудник}" Header="Operator" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Reports">
+
+                <Grid Background="#FFE3EDFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label43" Grid.ColumnSpan="4" Content="Differences between calculated and actual parameters" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                    <Rectangle HorizontalAlignment="Stretch"  Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Stretch" Margin="2"/>
+                    <Label x:Name="label44" Grid.Row="1" Grid.ColumnSpan="2" Content="Region" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <RadioButton x:Name="radioButton" IsChecked="True" Content="All regions" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" FontSize="16" GroupName="r1" Checked="radioButton_Checked"/>
+                    <DockPanel Grid.Column="1"  HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="2" >
+                        <Button x:Name="button_tab8_choose_1" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="24" Margin="0,4,15,4" FontSize="10" Click="button_tab8_choose_1_Click"/>
+                        <RadioButton x:Name="radioButton1" Content="Region:" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Height="32" Margin="0,4,15,4" FontSize="16" GroupName="r1" Checked="radioButton1_Checked"/>
+                        <TextBox x:Name="textBox_tab8_1" IsReadOnly="True" HorizontalAlignment="Stretch" Height="24" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="14"/>
+                    </DockPanel>
+                    <Rectangle HorizontalAlignment="Stretch"  Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="2" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Stretch" Margin="2"/>
+                    <RadioButton x:Name="radioButton2" IsChecked="True" Content="All records" HorizontalAlignment="Center"  Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="16" GroupName="r2" Checked="radioButton2_Checked"/>
+                    <DockPanel Grid.Column="3"  HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="2" >
+
+                        <RadioButton x:Name="radioButton3" Content="more than " DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Height="32" Margin="0,4,15,4" FontSize="16" GroupName="r2" Checked="radioButton3_Checked"/>
+                        <Label x:Name="label46" DockPanel.Dock="Right" Content="%" Height="32" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,0,40,0"/>
+                        <TextBox x:Name="textBox_tab8_2"  HorizontalAlignment="Stretch" Height="24" Margin="5,0,5,0" Text="0" VerticalAlignment="Center" FontSize="14" LostFocus="textBox_tab21_5_LostFocus"/>
+
+                    </DockPanel>
+
+                    <Label x:Name="label45" Content="Exceeding the difference" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
+
+                    <DatePicker x:Name="datePicker1_tab8" HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="4" Grid.Column="1"   Margin="0,5,20,5" Height="32" FontSize="16" Width="135" SelectedDateChanged="datePicker1_tab8_SelectedDateChanged"/>
+                    <Label x:Name="label49" Content="–" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" />
+                    <DatePicker x:Name="datePicker2_tab8" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="4" Grid.Column="2" Margin="5,5,20,5" Height="32" FontSize="16" Width="135"/>
+
+                    <Button x:Name="button" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center" Width="300" FontSize="16" Click="button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="30" Height="30"
+								Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_office_excel}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="Generate a report" FontSize="18" FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                        </StackPanel>
+                    </Button>
+                    <Rectangle HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="2" Stroke="Black" VerticalAlignment="Stretch" Margin="2"/>
+                    <Label x:Name="label48" Content="For period" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
+                    <Label x:Name="label47" Content="Pipe maintenance" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"  Grid.Row="7" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                    <Rectangle HorizontalAlignment="Stretch"  Grid.Row="8" Grid.ColumnSpan="2" Grid.Column="0" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Stretch" Margin="2"/>
+                    <Rectangle HorizontalAlignment="Stretch"  Grid.Row="8" Grid.ColumnSpan="2" Grid.Column="2" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Stretch" Margin="2"/>
+                    <Label x:Name="label51" Content="For period" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="8" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="datePicker3_tab8" HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.Row="9"  Margin="0,5,20,5" Height="24" FontSize="14" Width="135" SelectedDateChanged="datePicker3_tab8_SelectedDateChanged"/>
+                    <Label x:Name="label52" Content="–" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center" />
+                    <DatePicker x:Name="datePicker4_tab8" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="9" Grid.Column="1" Margin="5,5,20,5" Height="24" FontSize="14" Width="135"/>
+                    <Label x:Name="label50" Content="Region" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center"/>
+                    <RadioButton x:Name="radioButton4" IsChecked="True" Content="All regions" Grid.Column="2" HorizontalAlignment="Center" Margin="24,0,0,0" Grid.Row="9" VerticalAlignment="Center" FontSize="16" GroupName="r3" Checked="radioButton4_Checked"/>
+                    <DockPanel Grid.Column="3"  HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="9" >
+                        <Button x:Name="button_tab8_choose_2" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="24" Margin="0,4,15,4" FontSize="10" Click="button_tab8_choose_2_Click"/>
+                        <RadioButton x:Name="radioButton5" Content="Region:" DockPanel.Dock="Left" HorizontalAlignment="Left" Height="32" Margin="0,4,15,4" FontSize="16" GroupName="r3" Checked="radioButton5_Checked"/>
+                        <TextBox x:Name="textBox_tab8_3" IsReadOnly="True" HorizontalAlignment="Stretch" Height="24" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="14"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="2" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" LastChildFill="True" VerticalAlignment="Stretch" Grid.Row="10" Margin="100,0" >
+                        <Button x:Name="button_tab8_choose_3" Content="&gt;&gt;" DockPanel.Dock="Right" Width="39" HorizontalAlignment="Right" Height="24" Margin="0,4,15,4" FontSize="10" Click="button_tab8_choose_3_Click"/>
+                        <RadioButton x:Name="radioButton6" Content="Pipe:" DockPanel.Dock="Left" HorizontalAlignment="Left" Height="24" Margin="0,4,15,4" FontSize="16" GroupName="r3" Checked="radioButton6_Checked"/>
+                        <TextBox x:Name="textBox_tab8_4" IsReadOnly="True" HorizontalAlignment="Stretch" Height="24" Margin="5,0,5,0" Text="" VerticalAlignment="Center" FontSize="14"/>
+                    </DockPanel>
+                    <Button x:Name="button1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="11" Grid.RowSpan="2" VerticalAlignment="Center" Width="300" FontSize="16" Click="button1_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="30" Height="30"
+								Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,30,0">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Uniform" Visual="{DynamicResource appbar_office_excel}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock Text="Generate a report" FontSize="18" FontWeight="Normal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+    </DockPanel>
+
+</Controls:MetroWindow>
