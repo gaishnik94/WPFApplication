@@ -1,6 +1,7 @@
 # WPFApplication
 This is my WPF Apptication. 
-I translated all labels and dialog messages into English
+I translated all labels and dialog messages into English.
+
 It used for heating systems. With its help, calculation of heating losses is performed and generating reports on heat loss.
 
 ## Required
